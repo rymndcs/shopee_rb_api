@@ -3,7 +3,8 @@
 require_relative "live_helper"
 
 # Phase-0 checks from the Shopee plan (§9) that need a real app and shop: the derived signature is accepted, and the
-# read endpoints answer in the documented shapes. With SHOPEE_RECORD=1 each response replaces its doc fixture.
+# read endpoints answer in the documented shapes. With SHOPEE_RECORD=1 responses replace their doc
+# fixtures, except as live_helper.rb says (errors and orders are never recorded).
 class LiveReadsTest < Minitest::Test
   include LiveHelper::Gate
 
