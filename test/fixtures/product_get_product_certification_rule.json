@@ -1,0 +1,28 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.product.get_product_certification_rule?module=89&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample",
+    "adapted": [
+      "envelope placeholder \"-\" in \"error\" replaced with \"\"",
+      "envelope placeholder \"-\" in \"message\" replaced with \"\"",
+      "envelope placeholder \"-\" in \"warning\" replaced with \"\""
+    ]
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "message": "",
+    "warning": "",
+    "request_id": "326527603d034fd1b2dd6a74d70ade54",
+    "response": {
+      "certification_rule_list": [
+        {
+          "certification_type": 3,
+          "is_mandatory": true
+        }
+      ]
+    },
+    "error": ""
+  }
+}

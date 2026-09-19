@@ -1,0 +1,18 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.public.get_token_by_resend_code?module=104&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample"
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "request_id": "abdaweqweqweqe",
+    "shop_id_list": [
+      123
+    ],
+    "refresh_token": "abcd",
+    "access_token": "abcd",
+    "expire_in": 3600
+  }
+}

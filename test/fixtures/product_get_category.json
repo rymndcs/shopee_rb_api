@@ -1,0 +1,26 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.product.get_category?module=89&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample"
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "error": "",
+    "message": "",
+    "warning": "",
+    "request_id": "aaaaaaa",
+    "response": {
+      "category_list": [
+        {
+          "category_id": 123,
+          "parent_category_id": 456,
+          "original_category_name": "aaa",
+          "display_category_name": "bbb",
+          "has_children": false
+        }
+      ]
+    }
+  }
+}

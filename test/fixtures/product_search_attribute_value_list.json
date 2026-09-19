@@ -1,0 +1,32 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.product.search_attribute_value_list?module=89&type=1",
+    "pulled": "2026-09-19",
+    "origin": "hand-built from the documented response parameters (the doc response_sample is empty)"
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "error": "",
+    "msg": "",
+    "warning": "",
+    "request_id": "5d0c2c1e9b7a4f6e8d3c2b1a0f9e8d7c",
+    "debug_message": "",
+    "response": {
+      "value_list": [
+        {
+          "value_id": 1001,
+          "value_name": "H4"
+        },
+        {
+          "value_id": 1002,
+          "value_name": "H4 LED"
+        }
+      ],
+      "page_info": {
+        "cursor": 2,
+        "has_next": true
+      }
+    }
+  }
+}

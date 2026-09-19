@@ -1,0 +1,48 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.media_space.upload_image?module=91&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample",
+    "adapted": [
+      "envelope placeholder \"-\" in \"error\" replaced with \"\"",
+      "envelope placeholder \"-\" in \"message\" replaced with \"\"",
+      "envelope placeholder \"-\" in \"warning\" replaced with \"\"",
+      "placeholder \"-\" in image_info_list[].error and .message replaced with \"\""
+    ]
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "error": "",
+    "message": "",
+    "warning": "",
+    "request_id": "-",
+    "response": {
+      "image_info": {
+        "image_id": "-",
+        "image_url_list": [
+          {
+            "image_url_region": "-",
+            "image_url": "-"
+          }
+        ]
+      },
+      "image_info_list": [
+        {
+          "id": 0,
+          "error": "",
+          "message": "",
+          "image_info": {
+            "image_id": "-",
+            "image_url_list": [
+              {
+                "image_url_region": "-",
+                "image_url": "-"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

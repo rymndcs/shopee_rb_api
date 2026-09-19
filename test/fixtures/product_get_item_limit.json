@@ -1,0 +1,69 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.product.get_item_limit?module=89&type=1",
+    "pulled": "2026-09-19",
+    "origin": "hand-built from the documented response parameters (the doc response_sample is empty)"
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "error": "",
+    "message": "",
+    "warning": "",
+    "request_id": "b3e1b0c7a0f14e2d9a1c7b3e1b0c7a0f",
+    "response": {
+      "price_limit": {
+        "min_limit": 1.0,
+        "max_limit": 1000000.0
+      },
+      "stock_limit": {
+        "min_limit": 0,
+        "max_limit": 999999
+      },
+      "item_name_length_limit": {
+        "min_limit": 20,
+        "max_limit": 120
+      },
+      "item_image_count_limit": {
+        "min_limit": 1,
+        "max_limit": 9
+      },
+      "item_description_length_limit": {
+        "min_limit": 100,
+        "max_limit": 3000
+      },
+      "tier_variation_name_length_limit": {
+        "min_limit": 1,
+        "max_limit": 14
+      },
+      "tier_variation_option_length_limit": {
+        "min_limit": 1,
+        "max_limit": 30
+      },
+      "item_count_limit": {
+        "max_limit": 1000
+      },
+      "dts_limit": {
+        "days_to_ship_limit": {
+          "min_limit": 7,
+          "max_limit": 15
+        },
+        "non_pre_order_days_to_ship": 3
+      },
+      "weight_limit": {
+        "weight_mandatory": true
+      },
+      "dimension_limit": {
+        "dimension_mandatory": false
+      },
+      "size_chart_limit": {
+        "size_chart_mandatory": false,
+        "support_image_size_chart": true,
+        "support_template_size_chart": true
+      }
+    },
+    "gtin_limit": {
+      "gtin_validation_rule": "Optional"
+    }
+  }
+}

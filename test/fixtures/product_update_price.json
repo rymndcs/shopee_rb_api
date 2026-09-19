@@ -1,0 +1,29 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.product.update_price?module=89&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample"
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "error": "",
+    "message": "",
+    "warning": "",
+    "request_id": "aaaaaaa",
+    "response": {
+      "failure_list": [
+        {
+          "model_id": 3456,
+          "failed_reason": "fail"
+        }
+      ],
+      "success_list": [
+        {
+          "model_id": 0,
+          "original_price": 11.11
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.product.category_recommend?module=89&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample"
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "error": "",
+    "message": "",
+    "warning": "",
+    "request_id": "b2e4e0cdab4748f89301ca41e0587e73",
+    "response": {
+      "category_id": [
+        1000734,
+        1000382,
+        100093
+      ]
+    }
+  }
+}

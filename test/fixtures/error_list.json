@@ -1,0 +1,1225 @@
+{
+ "_source": {
+  "urls": [
+   "https://open.shopee.com/documents/v2/v2.public.get_access_token?module=104&type=1",
+   "https://open.shopee.com/documents/v2/v2.public.refresh_access_token?module=104&type=1",
+   "https://open.shopee.com/documents/v2/v2.public.get_shops_by_partner?module=104&type=1",
+   "https://open.shopee.com/documents/v2/v2.public.get_token_by_resend_code?module=104&type=1",
+   "https://open.shopee.com/documents/v2/v2.shop.get_shop_info?module=92&type=1",
+   "https://open.shopee.com/documents/v2/v2.shop.get_warehouse_detail?module=92&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_category?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_attribute_tree?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.category_recommend?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_brand_list?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.add_item?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_item_base_info?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.update_item?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_item_list?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.search_item?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.unlist_item?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_model_list?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.update_stock?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.update_price?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.init_tier_variation?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.update_tier_variation?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_variations?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_product_certification_rule?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_item_violation_info?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_item_content_diagnosis_result?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.media_space.upload_image?module=91&type=1",
+   "https://open.shopee.com/documents/v2/v2.logistics.get_channel_list?module=95&type=1",
+   "https://open.shopee.com/documents/v2/v2.order.get_order_list?module=94&type=1",
+   "https://open.shopee.com/documents/v2/v2.order.get_order_detail?module=94&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.get_item_limit?module=89&type=1",
+   "https://open.shopee.com/documents/v2/v2.product.search_attribute_value_list?module=89&type=1"
+  ],
+  "pulled": "2026-09-19",
+  "origin": "every (error, message) pair in the error_list and common_error_list of the endpoint docs above"
+ },
+ "pairs": [
+  {
+   "error": "error_auth",
+   "message": "partner_id is invalid"
+  },
+  {
+   "error": "error_auth",
+   "message": "The App is deleted, and you'll be unable to make any API call."
+  },
+  {
+   "error": "error_auth",
+   "message": "App developer’s permissions for authorizations have been restricted. If you’re a seller, contact the developer for more information. If you’re the developer, refer to the Open Platform Console for details."
+  },
+  {
+   "error": "error_param",
+   "message": "There is no partner_id in query."
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid partner_id."
+  },
+  {
+   "error": "error_param",
+   "message": "no timestamp"
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid timestamp"
+  },
+  {
+   "error": "error_param",
+   "message": "There is no sign in query."
+  },
+  {
+   "error": "error_sign",
+   "message": "Wrong sign."
+  },
+  {
+   "error": "invalid_partner_id",
+   "message": "Invalid partner_id, please have a check."
+  },
+  {
+   "error": "error_auth",
+   "message": "No permission to current api."
+  },
+  {
+   "error": "error_api_call_restricted",
+   "message": "The App permission for api call have been restricted. If you’re a seller, contact the developer for more information. If you’re the developer, refer to the Open Platform Console for details."
+  },
+  {
+   "error": "api_suspended",
+   "message": "The API is offline. Please call v2 API instead."
+  },
+  {
+   "error": "error_limit",
+   "message": "The total API call number made by your APP has reached the daily API call limit, please try again after 00: 00 (UTC+08:00)"
+  },
+  {
+   "error": "error_rate_limit",
+   "message": "Too many requests. You have reached the rate limit. Please try again later."
+  },
+  {
+   "error": "source_ip_undeclared",
+   "message": "Request Source IP ({ip}) is undeclared. Please declare all your IP addresses in the Shopee Open Platform Console > App list > IP Address Whitelist"
+  },
+  {
+   "error": "error_param",
+   "message": "Permission denied. This API is currently offline or the request path is incorrect."
+  },
+  {
+   "error": "error_param",
+   "message": "Partner_id is invalid, should be an integer between 0 and 4294967295."
+  },
+  {
+   "error": "error_param",
+   "message": "no timestamp."
+  },
+  {
+   "error": "error_param",
+   "message": "Timestamp is invalid, should be an integer between 0 and 4294967295."
+  },
+  {
+   "error": "error_param",
+   "message": "Timestamp is expired."
+  },
+  {
+   "error": "error_partner_key_expired",
+   "message": "Your API partner key has expired, please reset the Live API Partner Key in Console to get a new valid partner key to call open api."
+  },
+  {
+   "error": "error_api_permission",
+   "message": "This app type has no permission to this API."
+  },
+  {
+   "error": "error_param",
+   "message": "There is no access_token in query."
+  },
+  {
+   "error": "error_auth",
+   "message": "Invalid access_token."
+  },
+  {
+   "error": "error_auth",
+   "message": "Invalid partner_id or shopid."
+  },
+  {
+   "error": "shop_no_linked",
+   "message": "Partner and shop has no linked."
+  },
+  {
+   "error": "shop_banned",
+   "message": "The shop account has been banned. Permissions for shop authorization and API calls have been suspended until the shop account is restored."
+  },
+  {
+   "error": "invalid_acceess_token",
+   "message": "Invalid access_token, please have a check."
+  },
+  {
+   "error": "partner_shop_no_link",
+   "message": "Invalid partner_id or shop_id, please have a check."
+  },
+  {
+   "error": "error_ashop_api_permission",
+   "message": "The shop is Affiliate shop has no permission to call this API."
+  },
+  {
+   "error": "error_kyc_auth",
+   "message": "No permission. Please inform the seller to complete the Seller Registration on Shopee Seller Center first, then this shop can call for this API."
+  },
+  {
+   "error": "error_auth",
+   "message": "System error, please try again later."
+  },
+  {
+   "error": "error_param",
+   "message": "There is no shop_id in query."
+  },
+  {
+   "error": "error_param",
+   "message": "shop_id is invalid, should be an integer between 0 and 4294967295."
+  },
+  {
+   "error": "error_param",
+   "message": "Shipping options of Direct Shop will follow Local Shop."
+  },
+  {
+   "error": "error_not_found",
+   "message": "Wrong parameters, detail: {msg}."
+  },
+  {
+   "error": "error_param",
+   "message": "Wrong parameters, detail: {msg}."
+  },
+  {
+   "error": "error_permission",
+   "message": "Sorry you don't have the permission, detail: {msg}."
+  },
+  {
+   "error": "error_server",
+   "message": "System error. Please try again later."
+  },
+  {
+   "error": "common.invalid_shop",
+   "message": "Shop id is invalid. Please check your shop."
+  },
+  {
+   "error": "error_network",
+   "message": "Inner http call failed"
+  },
+  {
+   "error": "error_data",
+   "message": "parse data failed"
+  },
+  {
+   "error": "error_data",
+   "message": "data not exist"
+  },
+  {
+   "error": "error_param",
+   "message": "parameter invalid"
+  },
+  {
+   "error": "error_param",
+   "message": "The information you queried is not found."
+  },
+  {
+   "error": "error_server",
+   "message": "Something wrong. Please try later."
+  },
+  {
+   "error": "error_shop",
+   "message": "shopid is invalid"
+  },
+  {
+   "error": "error_param",
+   "message": "request not from gateway"
+  },
+  {
+   "error": "error_tier_img_partial",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_tier_img_old_app",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "order.order_list_invalid_time",
+   "message": "Start time must be earlier than end time and diff in 15days."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "The GTIN code is mandatory, please check and upload again."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "Please input the correct TS Mark (TD Mark) to upload your product, and refer to the SEH article - https://seller.shopee.tw/edu/article/19732 if you have any questions."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "Medicine ID is mandatory for products in Prescription/OTC category."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "Please input the correct medicine ID."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "For OTC medicine, maximum purchase limit per order is mandatory and cannot exceed 3 days of use."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "Upload failed, please upload a more standard size chart image."
+  },
+  {
+   "error": "product.error_busi",
+   "message": "Please input the tax information becasue the shop is invoice issued by Shopee"
+  },
+  {
+   "error": "error_auth_shop_not_found",
+   "message": "Shop is not found."
+  },
+  {
+   "error": "error_auth",
+   "message": "cnsc shop not upgraded, can not edit item."
+  },
+  {
+   "error": "error_param_shop_id_not_found",
+   "message": "Shop_id is not found."
+  },
+  {
+   "error": "error_param",
+   "message": "[Gateway] illegal request."
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid logistic info, {{.error_info}}"
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid category."
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid attribute. {{.error_info}}"
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid wholesale setting."
+  },
+  {
+   "error": "error_param",
+   "message": "Parameter is not match the constraints, {{.error_info}}."
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid Weight."
+  },
+  {
+   "error": "error_param",
+   "message": "Image not exist."
+  },
+  {
+   "error": "error_invalid_days_to_ship",
+   "message": "Invalid days_to_ship."
+  },
+  {
+   "error": "error_value_name_required",
+   "message": "Value_name is required."
+  },
+  {
+   "error": "error_value_id_must_equal_zero",
+   "message": "Value_id must equal 0."
+  },
+  {
+   "error": "error_invalid_category_attribute",
+   "message": "Category and attribute not match."
+  },
+  {
+   "error": "error_busi",
+   "message": "logistic must be free"
+  },
+  {
+   "error": "error_invalid_brand",
+   "message": "Invalid brand"
+  },
+  {
+   "error": "error_invalid_brand",
+   "message": "Brand ID value should be \"0\"."
+  },
+  {
+   "error": "error_invalid_brand",
+   "message": "Brand name required"
+  },
+  {
+   "error": "error_invalid_brand",
+   "message": "Brand ID required"
+  },
+  {
+   "error": "error_incalid_brand",
+   "message": "Brand ID or brand name required"
+  },
+  {
+   "error": "error_invalid_attribute",
+   "message": "Mandatory attribute information required"
+  },
+  {
+   "error": "error_invalid_brand",
+   "message": "Brand information required"
+  },
+  {
+   "error": "error_param",
+   "message": "dimension is required"
+  },
+  {
+   "error": "error_param",
+   "message": "invalid additional information"
+  },
+  {
+   "error": "error_param",
+   "message": "all BR tax field should be empty or be filled at same time"
+  },
+  {
+   "error": "error_get_shop_fail",
+   "message": "Get shop failed. please try later."
+  },
+  {
+   "error": "error_busi_add_item_failed",
+   "message": "Add item failed. please try later {{.error_info}}."
+  },
+  {
+   "error": "error_busi_invalid_shop_status",
+   "message": "Shop status invalid."
+  },
+  {
+   "error": "error_busi_invalid_account_status",
+   "message": "Account status is invalid."
+  },
+  {
+   "error": "error_invalid_category",
+   "message": "Invalid category ID {{.error_info}}"
+  },
+  {
+   "error": "error_busi_attribute_error",
+   "message": "Attribute NCC value is invalid"
+  },
+  {
+   "error": "error_busi_attribute_error",
+   "message": "Attribute NCC is mandatory"
+  },
+  {
+   "error": "error_busi_attribute_error",
+   "message": "Attribute BSMI value is invalid"
+  },
+  {
+   "error": "error_busi_attribute_error",
+   "message": "Attribute BSMI is mandatory"
+  },
+  {
+   "error": "error_attribute_fda_error",
+   "message": "Attribute FDA value is invalid"
+  },
+  {
+   "error": "error_inner",
+   "message": "Our system is taking some time to respond, please try later."
+  },
+  {
+   "error": "error_inner",
+   "message": "System error, please try again later or contact the OpenAPI support team."
+  },
+  {
+   "error": "error_unknown",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_item_not_found",
+   "message": "Product not found"
+  },
+  {
+   "error": "error_check_luc_fail",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_repeated_mtsku",
+   "message": "A similar product has already been uploaded"
+  },
+  {
+   "error": "error_invalid_price",
+   "message": "Invalid price, please use the correct format"
+  },
+  {
+   "error": "error_category_is_block",
+   "message": "Category is restricted"
+  },
+  {
+   "error": "error_less_required_attribute",
+   "message": "Mandatory attribute information required"
+  },
+  {
+   "error": "error_less_required_brand",
+   "message": "Brand information required"
+  },
+  {
+   "error": "error_inner",
+   "message": "Update item failed {{.error_info}}"
+  },
+  {
+   "error": "error_param",
+   "message": "Attribute format is invalid. NCC field only allows Eng Alphanumeric input"
+  },
+  {
+   "error": "error_param",
+   "message": "NCC filed only allows character length less than 50."
+  },
+  {
+   "error": "error_unlist_item_fail",
+   "message": "Please upload your products to UNLIST status. Products will be published automatically by Shopee at the official launch date."
+  },
+  {
+   "error": "error_invalid_logistic_info",
+   "message": "invalid logistic info , {{.error_info}}"
+  },
+  {
+   "error": "error_invalid_price_for_logistic",
+   "message": "Shipping channel cannot be enabled as product price exceeds limit."
+  },
+  {
+   "error": "error_auth",
+   "message": "The current item belong to the full FBS or B2C shop, so normal stock must be equal to 0"
+  },
+  {
+   "error": "error_param_validate",
+   "message": "This is not a valid GTIN. Please, inform a valid number."
+  },
+  {
+   "error": "error_desc_image_no_pass",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_busi_cannot_edit_vsku",
+   "message": "Can not use OpenAPI to edit/create VSKU, please connect with your manager"
+  },
+  {
+   "error": "error_auth",
+   "message": "The location_id input is not matched the shop's location_id(more/wrong). Please double check."
+  },
+  {
+   "error": "error_auth",
+   "message": "Lack of location_id, please double check."
+  },
+  {
+   "error": "error_auth",
+   "message": "Please wait for the holiday mode set then to edit item. Please try later."
+  },
+  {
+   "error": "error_auth",
+   "message": "Total stock must be more than reserved stock."
+  },
+  {
+   "error": "error_param",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_param_validate",
+   "message": "Wholesale cannot be used in this category and attributes."
+  },
+  {
+   "error": "error_auth",
+   "message": "Your shop can not use model level dts"
+  },
+  {
+   "error": "error_auth",
+   "message": "You do not have right to use seller location_id, please only fill seller_stock filed."
+  },
+  {
+   "error": "error.param",
+   "message": "Can not update item with stock less than reserved stock"
+  },
+  {
+   "error": "error_inner",
+   "message": "Invalid stock location ID"
+  },
+  {
+   "error": "error_param",
+   "message": "Can not update item with different stock structure. Can only update seller stock with location id when existing seller stock have location id. Can only update seller stock without location id when existing seller stock without location id."
+  },
+  {
+   "error": "error_param",
+   "message": "Can not update item with stock less than reserve stock"
+  },
+  {
+   "error": "error_busi",
+   "message": "The merchant/shop has multi warehouse, please input location id"
+  },
+  {
+   "error": "error_auth",
+   "message": "Stock should be larger than reserved stock."
+  },
+  {
+   "error": "error_incalid_brand",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_duplicated_brand",
+   "message": "Brand already exists"
+  },
+  {
+   "error": "error_marshal",
+   "message": "Interal error, please contact openapi team"
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid parameter for product."
+  },
+  {
+   "error": "error_system_busy",
+   "message": "Our system is taking some time to respond, please try later."
+  },
+  {
+   "error": "error_image_unavailable",
+   "message": "Image is invalid: single image url length is less than 32."
+  },
+  {
+   "error": "error_reach_shop_item_limit",
+   "message": "Item published item count reaches limit."
+  },
+  {
+   "error": "error_name_length_limit",
+   "message": "Exceeded item_name length limitation."
+  },
+  {
+   "error": "error_nil_shopid_or_itemid",
+   "message": "Query information failed."
+  },
+  {
+   "error": "error_desc_hash_tag_over_limit",
+   "message": "Count of hash tags is more than 18"
+  },
+  {
+   "error": "error_item_name_empty",
+   "message": "Item name could not be empty."
+  },
+  {
+   "error": "error_holiday_on_add_item",
+   "message": "Shop is under vocation mode."
+  },
+  {
+   "error": "error_nil_name_new_item",
+   "message": "Item_name cannot be empty."
+  },
+  {
+   "error": "error_item_name_is_too_short",
+   "message": "Item_name length is less than min limit."
+  },
+  {
+   "error": "error_title_exceeds_max_length",
+   "message": "The length of item_name is bigger than max limit."
+  },
+  {
+   "error": "error_title_character_forbidden",
+   "message": "Item_name contains forbidden characters."
+  },
+  {
+   "error": "error_desc_length_min_limit",
+   "message": "Description length is less than the min limit."
+  },
+  {
+   "error": "error_image_num_min",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_forbidden_category",
+   "message": "The category is forbidden."
+  },
+  {
+   "error": "error_brand_forbidden",
+   "message": "The brand is forbidden."
+  },
+  {
+   "error": "error_param_dts_exceeds_max_limit",
+   "message": "Days_to_ship exceeds max limit"
+  },
+  {
+   "error": "error_price_exceed_min_limitt",
+   "message": "Original_price is less than min price limit."
+  },
+  {
+   "error": "error_price_exceed_max_limitt",
+   "message": "Original_price is bigger than max price limit."
+  },
+  {
+   "error": "error_wholesale_price_less_than_ratio_limit",
+   "message": "Wholesale price is less than ratio limit."
+  },
+  {
+   "error": "error_param_category_not_support_pre_order",
+   "message": "Category does not support pre-order."
+  },
+  {
+   "error": "error_invalid_attribute_value",
+   "message": "Invalid attribute value."
+  },
+  {
+   "error": "error_wrong_attrsnapshot",
+   "message": "Invalid attribute."
+  },
+  {
+   "error": "error_category_level",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_category_path_count_limit",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_server",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_invalid_category",
+   "message": "Invalid category."
+  },
+  {
+   "error": "error_incalid_category",
+   "message": "Category IDs for L1 and L2 do not match."
+  },
+  {
+   "error": "error_category_dts",
+   "message": "The current day_to_ship is bigger than category's max days_to_ship."
+  },
+  {
+   "error": "error_invalid_category",
+   "message": "Category is blocked for CB seller."
+  },
+  {
+   "error": "error_whole_sale_min_count_incorrect",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_whole_sale_price_setting_incorrect",
+   "message": "Wholesale price can't more than original price."
+  },
+  {
+   "error": "error_video_info_not_found",
+   "message": "Video_info not found."
+  },
+  {
+   "error": "error_image_unavailable",
+   "message": "image is unavailable"
+  },
+  {
+   "error": "error_image_unavailable",
+   "message": "Image is unavailable"
+  },
+  {
+   "error": "error_invalid_language",
+   "message": "Invalid language."
+  },
+  {
+   "error": "error_param",
+   "message": "status is required."
+  },
+  {
+   "error": "error_busi_update_global_item_failed",
+   "message": "Update global item failed, please try later."
+  },
+  {
+   "error": "error_invalid_category",
+   "message": "Invalid category ID"
+  },
+  {
+   "error": "err_data",
+   "message": "Cannot accept your own offer."
+  },
+  {
+   "error": "error_item_not_found",
+   "message": "Item_id is not found."
+  },
+  {
+   "error": "error_slash_price_load",
+   "message": "Failed to load slash price."
+  },
+  {
+   "error": "error_query_over_itemid_size",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_query_condition_list_limit",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_query_query_limit_too_large",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_invalid_item_list",
+   "message": "Invalid item_id_list, please verify the ID and try again"
+  },
+  {
+   "error": "error_update_time_range",
+   "message": "Update_time_to should be later than update_time_from."
+  },
+  {
+   "error": "error_param_item_status",
+   "message": "Item status error."
+  },
+  {
+   "error": "error_param",
+   "message": "get items offset over limit, please use the next field"
+  },
+  {
+   "error": "error_inner",
+   "message": "System error, please try again later"
+  },
+  {
+   "error": "error_param",
+   "message": "Invalid request item_id"
+  },
+  {
+   "error": "error_param",
+   "message": "The item_id_list is required"
+  },
+  {
+   "error": "error_param",
+   "message": "Request items over limit, should be less than 50"
+  },
+  {
+   "error": "error_param",
+   "message": "item_status does not match latest violation"
+  },
+  {
+   "error": "error_shop_not_found",
+   "message": "Shop is not found."
+  },
+  {
+   "error": "error_data",
+   "message": "error data"
+  },
+  {
+   "error": "error_auth_product_is_pff",
+   "message": "Item/Model Fulfillment by Shopee  can not be update."
+  },
+  {
+   "error": "error_item_not_belong_shop",
+   "message": "Item not belong to shop."
+  },
+  {
+   "error": "error_cnsc_shop_block_update_tier_variation",
+   "message": "CNCS shop can not modify tier_variation structure."
+  },
+  {
+   "error": "error_param",
+   "message": "The level of tier-variation not change."
+  },
+  {
+   "error": "error_param",
+   "message": "The level of tier-variation over 2."
+  },
+  {
+   "error": "error_param",
+   "message": "Model tier_index error."
+  },
+  {
+   "error": "error_param",
+   "message": "Count of tier_variation options should be under 50. Count of 2-level variations combinations should be under 50."
+  },
+  {
+   "error": "error_cannt_edit_price_in_promotion",
+   "message": "Original_price cannot be edited when item is under promotion."
+  },
+  {
+   "error": "error_cannt_init_tier_in_promotion",
+   "message": "Tier_variation cannot be changed when item is under promotion."
+  },
+  {
+   "error": "error_cannt_be_no_variation_in_promotion",
+   "message": "Item cannot be without model when item is under promotion."
+  },
+  {
+   "error": "error_cannt_delete_option_in_promotion",
+   "message": "Option of tier_variation cannot be deleted when item is under promotion."
+  },
+  {
+   "error": "error_cannt_change_tier_variation_in_promotion",
+   "message": "Structure of tier_variation cannot be edited when item is under promotion."
+  },
+  {
+   "error": "error_tier_var_too_many",
+   "message": "Count of tier_variation is larger than 50."
+  },
+  {
+   "error": "error_tier_opt_too_many",
+   "message": "Count of tier_variation option is larger than 20."
+  },
+  {
+   "error": "error_tier_opt_val_too_long",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_tier_var_name_too_long",
+   "message": "{{.error_info}}"
+  },
+  {
+   "error": "error_price_should_be_same_for_wholesales",
+   "message": "All model price should be the same when the item has been set wholesales."
+  },
+  {
+   "error": "error_model_empty_tier_index_nonempty",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_model_tier_index_bound",
+   "message": "Invalid item iter_index."
+  },
+  {
+   "error": "error_model_count_over_limit",
+   "message": "The count of model is too large. Should be under 20 (50 for TW)"
+  },
+  {
+   "error": "error_model_nonempty_itemtier_empty_index",
+   "message": "Item tier_index is required."
+  },
+  {
+   "error": "error_model_duplicate_name",
+   "message": "Item tier_variation have duplicate name."
+  },
+  {
+   "error": "error_model_duplicate_tier_variation_index",
+   "message": "Item have duplicate tier_index."
+  },
+  {
+   "error": "error_param",
+   "message": "request must set one of [item_name,attribute_status]"
+  },
+  {
+   "error": "error_unlist_item_all_failed",
+   "message": "Unlist item all failed."
+  },
+  {
+   "error": "error_unlist_item_failed",
+   "message": "Unlist item failed. please try later."
+  },
+  {
+   "error": "error_busi_cannot_delist_reviewing_or_banned_item",
+   "message": "Banned and Reviewing Products cannot be delisted"
+  },
+  {
+   "error": "error_auth",
+   "message": "The registered phone number of your shop is abnormal (Malaysian phone number was detected), please update the phone number immediately."
+  },
+  {
+   "error": "error_nil_item_in_req",
+   "message": "Interal error, please contact openapi team."
+  },
+  {
+   "error": "error_set_normal_unlisted_item",
+   "message": "Cannot change unlisted item status to normal directly, need to publishdelisted item first."
+  },
+  {
+   "error": "error_unlist_item_failed",
+   "message": "Unlist item failed. plaese try later."
+  },
+  {
+   "error": "error_cannt_unlisted_in_promotion",
+   "message": "Item cannot be unlisted when item is under promotion."
+  },
+  {
+   "error": "error_in_item_promotion_unlsit_lock",
+   "message": "Can't unlist item when item is under promotion."
+  },
+  {
+   "error": "error_unlist_in_promotion",
+   "message": "Cannot unlist item when item is under promotion."
+  },
+  {
+   "error": "error_param",
+   "message": "invalid wholesale setting"
+  },
+  {
+   "error": "error_busi_cannot_update_field",
+   "message": "Update item failed , {{.error_info}}."
+  },
+  {
+   "error": "error_busi_item_status_invalid",
+   "message": "Invalid item status."
+  },
+  {
+   "error": "error_busi_update_item_failed",
+   "message": "Update item failed, please try later."
+  },
+  {
+   "error": "error attribute",
+   "message": "Your attribute info is invalid. Please fill in the category related attributes with correct attribute value."
+  },
+  {
+   "error": "error category",
+   "message": "Your category is invalid or prohibited."
+  },
+  {
+   "error": "error brand",
+   "message": "Your brand is invalid. Please use the valid brand under your category."
+  },
+  {
+   "error": "error_item_or_variation_not_found",
+   "message": "Item or model doesn't exist."
+  },
+  {
+   "error": "error_seller_under_penalty",
+   "message": "The shop is under penalty."
+  },
+  {
+   "error": "error_estimated_days_limit",
+   "message": "Days_to_ship limitation exceeded."
+  },
+  {
+   "error": "error_item_uneditable",
+   "message": "Can't edit this item. item status can not support editing."
+  },
+  {
+   "error": "error_perm_non_admin",
+   "message": "Don't have permission."
+  },
+  {
+   "error": "error_cannt_edit_name_in_promotion",
+   "message": "Item_name cannot be edited when item is under promotion.."
+  },
+  {
+   "error": "error_cannt_edit_description_in_promotion",
+   "message": "Description of item cannot be edited when item is under promotion.."
+  },
+  {
+   "error": "error_cannt_edit_image_in_promotion",
+   "message": "Image of item cannot be edited when item is under promotion.."
+  },
+  {
+   "error": "error_cannt_edit_pre_order_in_promotion",
+   "message": "Item cannot be changed to pre-order when item is under promotion.."
+  },
+  {
+   "error": "error_cannt_edit_estimated_days_in_promotion",
+   "message": "Days_to_ship cannot be edited when item is under promotion."
+  },
+  {
+   "error": "error_item_in_promotion",
+   "message": "item is in promotion can not set category"
+  },
+  {
+   "error": "error_in_item_promotion_image_item_lock",
+   "message": "Can't update images when item is under promotion."
+  },
+  {
+   "error": "error_in_item_promotion_name_item_lock",
+   "message": "Can't update item_name when item is under promotion."
+  },
+  {
+   "error": "error_in_item_promotion_description_lock",
+   "message": "Can't update description when item is under promotion."
+  },
+  {
+   "error": "error_flash_sale_days_to_ship_lock",
+   "message": "Days_to ship cannot be changed when item is under ongoing/upcoming flash sale."
+  },
+  {
+   "error": "error_slash_price_not_lowest",
+   "message": "In slash sale, price should not be lower or same as slash price."
+  },
+  {
+   "error": "error_param",
+   "message": "Repeat model_id."
+  },
+  {
+   "error": "error_param",
+   "message": "Wrong model_id."
+  },
+  {
+   "error": "error_busi_price_lower_then_wholesale_price",
+   "message": "Original_price should bigger then wholesale price"
+  },
+  {
+   "error": "error_update_price_fail",
+   "message": "Update price failed, please try later."
+  },
+  {
+   "error": "error_related_product_in_promotion",
+   "message": "Asku has upcoming or ongoing promotion, can't update global product priceｼ pls update price  in shop sku"
+  },
+  {
+   "error": "error_price_out_of_range",
+   "message": "Price is out of range."
+  },
+  {
+   "error": "error_in_item_promotion_item_price_lock",
+   "message": "Can't update price when item is under promotion."
+  },
+  {
+   "error": "error_slash_price_models_diff",
+   "message": "In slash sale, the model price should be the same."
+  },
+  {
+   "error": "error_cannot_update_price_in_promotion",
+   "message": "Price cannot be changed when model is under promotion."
+  },
+  {
+   "error": "error_edit_item_price_for_item_has_model",
+   "message": "Can't edit item price directly while item has models."
+  },
+  {
+   "error": "error_wms_shop_block_upate_stock",
+   "message": "Warehouse shop can't update stock."
+  },
+  {
+   "error": "error_busi_update_stock_failed",
+   "message": "Update stock failed, please check failure_list for detailed reason"
+  },
+  {
+   "error": "error_server",
+   "message": "The current item belong to the full FBS shop, so normal stock must be equal to 0"
+  },
+  {
+   "error": "error_cannt_edit_stock_in_promotion",
+   "message": "Normal_stock cannot be edited when item is under promotion."
+  },
+  {
+   "error": "error_holiday_mode_change_stock",
+   "message": "Cannot change stock in holiday mode."
+  },
+  {
+   "error": "error_promotion_cantnot_update_stock",
+   "message": "Cannot change stock when item is under promotion."
+  },
+  {
+   "error": "error_in_item_promotion_nomodel_to_models",
+   "message": "Can't to edit item stock directly while item has models."
+  },
+  {
+   "error": "error_model_update_stock_model_in_promotion",
+   "message": "Model stock cannot be editted when item/model is promotion."
+  },
+  {
+   "error": "error_edit_item_stock_for_item_has_model",
+   "message": "Can't to edit item stock directly while item has models."
+  },
+  {
+   "error": "error_tier_index",
+   "message": "The tier_index is not exist"
+  },
+  {
+   "error": "error_duplicate_modelid",
+   "message": "The model_id is duplicate, model_id:{{.model_id}}"
+  },
+  {
+   "error": "error_wrong_modelid",
+   "message": "The model_id is wrong or not related to this item, model_id:{{.model_id}}"
+  },
+  {
+   "error": "error_auth_model_is_pff",
+   "message": "Item/Model Fulfillment by Shopee  can not be update."
+  },
+  {
+   "error": "error_param",
+   "message": "Canot change the level of tier-variation."
+  },
+  {
+   "error": "error_busi_cannot_delete_all_model",
+   "message": "Cannot delete all models by this api."
+  },
+  {
+   "error": "error_tier_var_level_not_same",
+   "message": "Item tier-variation level not same"
+  },
+  {
+   "error": "error_tier_var_is_",
+   "message": "Item without tier-variation. Please use init_tier_variation api to upgrade the structure."
+  },
+  {
+   "error": "error_tier_img_not_allower",
+   "message": "Not allowed to update tier-variation image."
+  },
+  {
+   "error": "error_in_item_promotion_remove_model",
+   "message": "Can't change tier_variation when item is under promotion."
+  },
+  {
+   "error": "error_model_tier_index_level_mismatch_var_level",
+   "message": "Item tier_index level mismatch tier variation list level."
+  },
+  {
+   "error": "invalid_code",
+   "message": "The code is expired or used or invalid, please check the code."
+  },
+  {
+   "error": "invalid_main_acount_id",
+   "message": "The code or main_accoount_id is wrong, please check the code or the main_account_id."
+  },
+  {
+   "error": "invalid_shop_id",
+   "message": "The code or shop_id is wrong, please check the code or the shop_id."
+  },
+  {
+   "error": "error_server",
+   "message": "error server"
+  },
+  {
+   "error": "merchant_access_expired",
+   "message": "Your access to merchant has expired."
+  },
+  {
+   "error": "merchant_no_linked",
+   "message": "Partner and merchant has no linked."
+  },
+  {
+   "error": "error_merchant_refresh_token",
+   "message": "Your refresh token is error,please check refresh token or merchant_id."
+  },
+  {
+   "error": "refresh_token_expired",
+   "message": "Your refresh_token expired."
+  },
+  {
+   "error": "shop_access_expired",
+   "message": "Your access to shop has expired."
+  },
+  {
+   "error": "error_shop_refresh_token",
+   "message": "Your refresh token is error ,please check refresh token or shopid."
+  },
+  {
+   "error": "supplier_access_expired",
+   "message": "Your access to supplier has expired."
+  },
+  {
+   "error": "supplier_no_linked",
+   "message": "Partner and Supplier has no linked."
+  },
+  {
+   "error": "error_merchant_refresh_token",
+   "message": "Your refresh token is error ,please check refresh token or supplier_id."
+  },
+  {
+   "error": "error_not_exists",
+   "message": "The user does not exist."
+  },
+  {
+   "error": "error_param",
+   "message": "The shop id you provided is not found. Please check your shop id."
+  },
+  {
+   "error": "warehouse.error_can_not_find_warehouse",
+   "message": "This error will show if there is no legal warehouse address for given shop id"
+  },
+  {
+   "error": "warehouse.error_not_in_whitelist",
+   "message": "This error will show if your shop has no permission to access multi-warehouse"
+  },
+  {
+   "error": "warehouse.error_region_can_not_blank",
+   "message": "This error will show if region is missing."
+  },
+  {
+   "error": "warehouse.error_region_not_valid",
+   "message": "This error will show if region is not in ID, PH, VN, SG, TW, MX"
+  },
+  {
+   "error": "warehouse.error_shop_id_can_not_blank",
+   "message": "This error will show if shop id is missing."
+  }
+ ]
+}

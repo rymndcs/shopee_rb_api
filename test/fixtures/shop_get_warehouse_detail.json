@@ -1,0 +1,35 @@
+{
+  "_source": {
+    "url": "https://open.shopee.com/documents/v2/v2.shop.get_warehouse_detail?module=92&type=1",
+    "pulled": "2026-09-19",
+    "origin": "official documentation response_sample",
+    "adapted": [
+      "the sample pairs a success payload with an error; error and message cleared to make it the success sample"
+    ]
+  },
+  "status": 200,
+  "headers": {},
+  "body": {
+    "request_id": "16488d76e337c606s5504f26",
+    "error": "",
+    "message": "",
+    "response": [
+      {
+        "warehouse_id": 6,
+        "warehouse_name": "warehouse1",
+        "warehouse_type": 1,
+        "location_id": "IDZ",
+        "address_id": 118454205,
+        "region": "ID",
+        "state": "ACEH",
+        "city": "KAB. ACEH UTARA",
+        "district": "Mato Grosso",
+        "town": "Av Maria H A dos Santos",
+        "address": "Parque Sagrada Família",
+        "zipcode": "24379",
+        "state_code": "12345",
+        "holiday_mode_state": 0
+      }
+    ]
+  }
+}
