@@ -14,13 +14,23 @@ require "logger"
 #   Either set may add   <PREFIX>_ENDPOINT (a name from ShopeeRbApi::ENDPOINTS) and <PREFIX>_BASE_URL.
 #   SHOPEE_RECORD=1      writes every successful response (2xx, empty `error`), redacted, over
 #                        test/fixtures/<endpoint>.json with "_source": "recorded live <date>", replacing the
-#                        documentation sample. Error responses are never recorded.
+#                        documentation sample. Error responses are never recorded, and neither is any order response
+#                        (/api/v2/order/*): orders stay on documentation samples. Customer personal data (email,
+#                        phone, name, nickname, username, address, and whole recipient or buyer objects) is redacted
+#                        wherever it appears (captain decision 2026-09-20).
 #
 # The live tests only READ. They never refresh a token (Shopee refresh tokens are single use) and never write.
 module LiveHelper
   PREFIXES = { "SHOPEE_SANDBOX" => :sandbox, "SHOPEE_LIVE" => :sg }.freeze
   REQUIRED = %w[PARTNER_ID PARTNER_KEY SHOP_ID ACCESS_TOKEN].freeze
   SECRET_KEYS = /token|secret|partner_key|\Asign\z|resend_code|\Acode\z/i
+  # Order endpoints are never recorded: their responses carry real customers' names, phones and addresses.
+  ORDER_PATHS = %r{\A/api/v2/order/}
+  # Customer personal-data words, matched case-insensitively against each word of a key (snake_case or camelCase,
+  # digits ignored: address1, phone2, buyer_username, item_name, nickName). A matching key loses its whole value.
+  PERSONAL_WORDS = %w[email phone name nickname username address].freeze
+  # A Hash or Array under a key naming a recipient or buyer (recipient_address, buyer_info) is redacted whole.
+  PERSON_OBJECTS = /recipient|buyer/i
   # Path => fixture name, where the fixture is named after the doc api_name rather than the path.
   FIXTURE_NAMES = { "product_get_variation_tree" => "product_get_variations" }.freeze
 
@@ -72,6 +82,8 @@ module LiveHelper
     private
 
     def record(path, result)
+      return if path.match?(ORDER_PATHS)
+
       parsed = JSON.parse(result[:body])
       return unless recordable?(result[:status], parsed)
 
@@ -99,7 +111,16 @@ module LiveHelper
     end
 
     def redact_member(key, value)
+      return "[REDACTED]" if personal?(key, value)
+
       key.to_s.match?(SECRET_KEYS) && value.is_a?(String) ? "[REDACTED]" : redact(value)
+    end
+
+    def personal?(key, value)
+      words = key.to_s.gsub(/([a-z])([A-Z])/, '\1_\2').downcase.delete("0-9").split(/[^a-z]+/)
+      return true if words.intersect?(PERSONAL_WORDS)
+
+      (value.is_a?(Hash) || value.is_a?(Array)) && key.to_s.match?(PERSON_OBJECTS)
     end
   end
 

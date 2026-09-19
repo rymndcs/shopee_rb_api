@@ -269,8 +269,10 @@ SHOPEE_SANDBOX_SHOP_ID=... SHOPEE_SANDBOX_ACCESS_TOKEN=... bundle exec rake test
 ```
 
 Use `SHOPEE_LIVE_*` for the production app (endpoint `:sg` unless `SHOPEE_LIVE_ENDPOINT` says otherwise). Add
-`SHOPEE_RECORD=1` to replace the documentation fixtures with redacted recordings of successful responses (error
-responses are never recorded).
+`SHOPEE_RECORD=1` to replace the documentation fixtures with redacted recordings of successful responses. Error
+responses and order responses (`/api/v2/order/*`) are never recorded, so customers' personal data never reaches a
+fixture; personal-data keys (email, phone, name, nickname, username, address, whole recipient and buyer objects) are
+redacted wherever else they appear.
 
 ## Contract version
 
