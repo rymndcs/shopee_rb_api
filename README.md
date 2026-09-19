@@ -214,6 +214,10 @@ network errors on idempotent calls) and re-signs every attempt:
 ShopeeRbApi::Client.new(..., retry_policy: ShopeeRbApi::RetryPolicy.new(max_retries: 5))
 ```
 
+A policy waits at least an error's `retry_after`, and that is not capped. On `error_limit` (`QuotaExceededError`)
+it is the time left until 00:00 UTC+8, so an opted-in call can sleep for up to a day. Rescue `QuotaExceededError`
+before it reaches the policy, or pass a `sleeper:` that refuses long waits, if a thread must not block that long.
+
 Shopee has no idempotency key, so `products.create`, `products.update`, `media.upload_image` and the variant calls are
 never retried: after a timeout, look the item up (for example `find_by_seller_sku`) before trying again.
 

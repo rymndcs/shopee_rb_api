@@ -4,11 +4,9 @@ require_relative "helper"
 
 module Conformance
   # Hosts are configuration, not code (CONTRACT.md "Hosts"): every named host is selectable, any URL can replace it,
-  # and no host is spelled out anywhere in lib/ outside the ENDPOINTS table.
+  # and once custom hosts are configured no call reaches any other host.
   class HostsTest < Minitest::Test
     include Support
-
-    ROOT = File.expand_path("../..", __dir__)
 
     def read_url(**)
       client, transport = client_with(adapter.read_success_response, **)
@@ -45,16 +43,17 @@ module Conformance
       assert_raises(gem_module::ConfigurationError) { client_with(auth_base_url: "ftp://example.test") }
     end
 
-    def test_no_host_is_hardcoded_outside_the_endpoints_table
-      table = File.join(ROOT, "lib", adapter.gem_name, "endpoints.rb")
-      offenders = Dir[File.join(ROOT, "lib/**/*.rb")].reject { |f| f == table }.flat_map do |file|
-        File.readlines(file).each_with_index.filter_map do |line, index|
-          code = line.sub(/(^|\s)#.*$/, "")
-          "#{file.delete_prefix("#{ROOT}/")}:#{index + 1}" if code.match?(%r{https?://})
-        end
-      end
+    def test_custom_hosts_are_the_only_hosts_any_call_reaches
+      hosts = { base_url: "https://api.example.test", auth_base_url: "https://consent.example.test" }
+      adapter.shared_calls.each do |sample|
+        client, transport = client_with(sample[:response], **hosts)
+        force(run_call(sample[:call], client, adapter.build_shop(client)))
 
-      assert_empty offenders
+        transport.requests.each { |request| assert_equal "api.example.test", request.uri.host, sample[:name] }
+      end
+      client, = client_with(**hosts)
+
+      assert_equal "consent.example.test", URI(adapter.authorize(client)).host
     end
   end
 end

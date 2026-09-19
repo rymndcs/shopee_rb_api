@@ -105,6 +105,15 @@ class ErrorTableTest < Minitest::Test
     end
   end
 
+  def test_scalar_payloads_and_lists_of_ids_are_returned_untouched
+    body = { "error" => "", "request_id" => "r", "response" => 7, "item_list" => [1, 2], "failure_list" => [3] }
+    client, = client_with(FakeTransport.json(body))
+    response = A.build_shop(client).request(:get, "/api/v2/product/some_list")
+
+    assert_equal({ "item_list" => [1, 2], "failure_list" => [3] }, response.data)
+    assert_empty response.item_errors
+  end
+
   def test_a_non_empty_error_inside_a_2xx_raises_even_with_a_payload
     body = Fixtures.body("shop_get_warehouse_detail")
                    .merge("error" => "warehouse.error_not_in_whitelist",

@@ -53,7 +53,9 @@ module ShopeeRbApi
         inner = rest.delete("response")
         # get_item_limit documents gtin_limit beside `response`; keep such siblings rather than drop them.
         # A null `response` (update_tier_variation answers with the envelope only) leaves the siblings, often {}.
-        inner.is_a?(Array) ? inner : rest.merge(inner || {})
+        return inner if inner.is_a?(Array)
+
+        inner.is_a?(Hash) ? rest.merge(inner) : rest
       elsif rest.key?("data") && rest.size == 1
         rest["data"]
       else
@@ -75,15 +77,19 @@ module ShopeeRbApi
     end
 
     def failure_lists(data)
-      (Array(data["failure_list"]) + Array(data["failure_item_list"])).map do |failure|
+      (entries(data["failure_list"]) + entries(data["failure_item_list"])).map do |failure|
         item_error(failure["item_id"] || failure["model_id"], "", failure["failed_reason"], failure)
       end
     end
 
     def flagged(list, id_key, code_key, message_key)
-      Array(list).reject { |entry| entry[code_key].to_s.empty? }.map do |entry|
+      entries(list).reject { |entry| entry[code_key].to_s.empty? }.map do |entry|
         item_error(entry[id_key], entry[code_key], entry[message_key], entry)
       end
+    end
+
+    def entries(list)
+      list.is_a?(Array) ? list.grep(Hash) : []
     end
 
     def item_error(id, code, message, raw)

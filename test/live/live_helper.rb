@@ -12,8 +12,9 @@ require "logger"
 #   Live:                SHOPEE_LIVE_PARTNER_ID, SHOPEE_LIVE_PARTNER_KEY, SHOPEE_LIVE_SHOP_ID,
 #                        SHOPEE_LIVE_ACCESS_TOKEN                 (endpoint defaults to :sg)
 #   Either set may add   <PREFIX>_ENDPOINT (a name from ShopeeRbApi::ENDPOINTS) and <PREFIX>_BASE_URL.
-#   SHOPEE_RECORD=1      writes every response, redacted, over test/fixtures/<endpoint>.json with
-#                        "_source": "recorded live <date>", replacing the documentation sample.
+#   SHOPEE_RECORD=1      writes every successful response (2xx, empty `error`), redacted, over
+#                        test/fixtures/<endpoint>.json with "_source": "recorded live <date>", replacing the
+#                        documentation sample. Error responses are never recorded.
 #
 # The live tests only READ. They never refresh a token (Shopee refresh tokens are single use) and never write.
 module LiveHelper
@@ -72,6 +73,8 @@ module LiveHelper
 
     def record(path, result)
       parsed = JSON.parse(result[:body])
+      return unless recordable?(result[:status], parsed)
+
       name = path.delete_prefix("/api/v2/").tr("/", "_")
       name = FIXTURE_NAMES.fetch(name, name)
       fixture = { "_source" => { "url" => path, "pulled" => Date.today.iso8601,
@@ -80,6 +83,10 @@ module LiveHelper
       File.write(File.join(@dir, "#{name}.json"), "#{JSON.pretty_generate(fixture)}\n")
     rescue JSON::ParserError
       nil
+    end
+
+    def recordable?(status, parsed)
+      (200..299).cover?(status.to_i) && parsed.is_a?(Hash) && parsed["error"].to_s.empty?
     end
 
     def redact(value)

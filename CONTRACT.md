@@ -73,8 +73,9 @@ other URL can replace it:
   `Symbol => { api: "https://...", auth: "https://..." }`, the API host and the consent-page host for that name.
 - `endpoint:` picks a name. `base_url:` replaces the API host and `auth_base_url:` replaces the consent-page host, with
   any URL (a proxy, a new region, a stale sandbox).
-- No host URL may appear anywhere in a gem's `lib/` except that table. The conformance suite scans for it, selects
-  every named host, and selects a custom URL for each of the two hosts.
+- No host URL may appear anywhere in a gem's `lib/` except that table. The conformance suite configures a custom URL
+  for both hosts and checks that every shared call and the consent URL reach only those hosts; it also selects every
+  named host.
 - The default endpoint is one named constant, so changing it is a one-line change.
 
 | Gem | `ENDPOINTS` names | Default | Notes |

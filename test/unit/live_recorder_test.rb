@@ -26,5 +26,18 @@ class LiveRecorderTest < Minitest::Test
       refute_includes File.read(File.join(dir, "product_get_variations.json")), "abc"
     end
   end
+
+  def test_error_responses_never_replace_a_fixture
+    Dir.mktmpdir do |dir|
+      refusal = { "error" => "warehouse.error_not_in_whitelist", "message" => "Not whitelisted.", "request_id" => "r" }
+      inner = FakeTransport.new(FakeTransport.json(refusal), FakeTransport.json({ "error" => "" }, status: 500))
+      recorder = LiveHelper::Recorder.new(inner, secrets: [], label: "SHOPEE_SANDBOX", dir:)
+      2.times do
+        recorder.call(method: :get, url: "https://h.test/api/v2/shop/get_warehouse_detail", headers: {}, body: nil)
+      end
+
+      assert_empty Dir.children(dir)
+    end
+  end
 end
 # rubocop:enable Minitest/MultipleAssertions
