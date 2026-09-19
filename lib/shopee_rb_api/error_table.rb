@@ -11,7 +11,8 @@ module ShopeeRbApi
   module ErrorTable
     # [code, message pattern or nil, class name]. The first matching rule wins.
     MESSAGE_RULES = [
-      ["error_param", /no sign in query|no timestamp|timestamp is (expired|invalid)|invalid timestamp/i, :SignatureError],
+      ["error_param", /no sign in query|no timestamp|timestamp is (expired|invalid)|invalid timestamp/i,
+       :SignatureError],
       ["error_param", /\AInvalid partner_id\.\z/, :AppCredentialsError],
       ["error_param", /There is no (partner_id|access_token|shop_id) in query|should be an integer between/i,
        :RequestError],
@@ -109,7 +110,9 @@ module ShopeeRbApi
     def classify(code, message)
       code = code.to_s
       message = message.to_s
-      rule = MESSAGE_RULES.find { |rule_code, pattern, _| (rule_code.nil? || rule_code == code) && message.match?(pattern) }
+      rule = MESSAGE_RULES.find do |rule_code, pattern, _|
+        (rule_code.nil? || rule_code == code) && message.match?(pattern)
+      end
       name = rule ? rule.last : BY_CODE[code]
       name ? ShopeeRbApi.const_get(name) : ApiError
     end

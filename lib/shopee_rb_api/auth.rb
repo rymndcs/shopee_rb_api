@@ -31,7 +31,8 @@ module ShopeeRbApi
     def exchange_code(code:, **locator)
       raise ArgumentError, "code: is empty" if code.to_s.empty?
 
-      body = { "code" => code.to_s, "partner_id" => @connection.partner_id }.merge(one_of!(locator, %i[shop_id main_account_id]))
+      body = { "code" => code.to_s,
+               "partner_id" => @connection.partner_id }.merge(one_of!(locator, %i[shop_id main_account_id]))
       grant(@connection.call(:post, Endpoints::TOKEN_GET, body:))
     end
 
@@ -52,7 +53,10 @@ module ShopeeRbApi
     # https://open.shopee.com/documents/v2/v2.public.get_token_by_resend_code?module=104&type=1
     def exchange_resend_code(resend_code:, **locator)
       raise ArgumentError, "resend_code: is empty" if resend_code.to_s.empty?
-      raise ArgumentError, "unknown locator key(s) #{locator.keys.inspect}: Shopee takes resend_code only" if locator.any?
+      if locator.any?
+        raise ArgumentError,
+              "unknown locator key(s) #{locator.keys.inspect}: Shopee takes resend_code only"
+      end
 
       grant(@connection.call(:post, Endpoints::TOKEN_BY_RESEND_CODE, body: { "resend_code" => resend_code.to_s }))
     end
@@ -66,7 +70,11 @@ module ShopeeRbApi
     def one_of!(locator, keys)
       unknown = locator.keys - keys
       raise ArgumentError, "unknown locator key(s) #{unknown.inspect}; expected one of #{keys.inspect}" if unknown.any?
-      raise ArgumentError, "exactly one of #{keys.map { |k| "#{k}:" }.join(' or ')} is required" unless locator.size == 1
+      unless locator.size == 1
+        raise ArgumentError, "exactly one of #{keys.map do |k|
+          "#{k}:"
+        end.join(" or ")} is required"
+      end
 
       key, value = locator.first
       { key.to_s => Resources.integer_id(value, key) }

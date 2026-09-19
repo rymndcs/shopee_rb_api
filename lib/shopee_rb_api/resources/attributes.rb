@@ -9,16 +9,20 @@ module ShopeeRbApi
     # Native params: value_name, limit (page size, 1..100, default 100) and cursor (default 0).
     # https://open.shopee.com/documents/v2/v2.product.search_attribute_value_list?module=89&type=1
     def search_values(attribute_id:, **params)
-      params = params.dup
-      limit = page_size!(params.delete(:limit), LIMIT_MAX)
-      start = params.delete(:cursor)
-      body = stringify(params).merge("attribute_id" => id!(attribute_id, "attribute_id"), "limit" => limit)
-      Pager.new(cursor: start&.to_s) do |cursor|
+      limit = page_size!(params[:limit], LIMIT_MAX)
+      body = stringify(params.except(:limit, :cursor)).merge("attribute_id" => id!(attribute_id, "attribute_id"),
+                                                             "limit" => limit)
+      Pager.new(cursor: params[:cursor]&.to_s) do |cursor|
         response = session.post(Endpoints::SEARCH_ATTRIBUTE_VALUE_LIST, body.merge("cursor" => Integer(cursor || 0)),
                                 idempotent: true)
-        info = response.data["page_info"] || {}
-        page(response, "value_list", info["has_next"] == true && !info["cursor"].nil? ? info["cursor"].to_s : nil)
+        page(response, "value_list", next_cursor(response.data["page_info"]))
       end
+    end
+
+    private
+
+    def next_cursor(info)
+      info.is_a?(Hash) && info["has_next"] == true && !info["cursor"].nil? ? info["cursor"].to_s : nil
     end
   end
 end

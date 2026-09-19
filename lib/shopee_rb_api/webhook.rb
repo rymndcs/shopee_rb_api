@@ -29,13 +29,17 @@ module ShopeeRbApi
       raw = JSON.parse(raw_body.to_s)
       raise ArgumentError, "webhook body is not a JSON object" unless raw.is_a?(Hash)
 
-      raw = Envelope.deep_freeze(raw)
+      event(Envelope.deep_freeze(raw))
+    rescue JSON::ParserError
+      raise ArgumentError, "webhook body is not valid JSON"
+    end
+
+    def event(raw)
       code = raw["code"].to_s
       WebhookEvent.new(type: TYPES.fetch(code, :other), code:, shop_id: raw["shop_id"]&.to_s,
                        occurred_at: raw["timestamp"].is_a?(Integer) ? Time.at(raw["timestamp"]).utc : nil,
                        data: raw["data"].is_a?(Hash) ? raw["data"] : {}.freeze, raw:)
-    rescue JSON::ParserError
-      raise ArgumentError, "webhook body is not valid JSON"
     end
+    private_class_method :event
   end
 end

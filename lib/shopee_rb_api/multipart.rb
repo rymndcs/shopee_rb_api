@@ -23,7 +23,7 @@ module ShopeeRbApi
       type = CONTENT_TYPES.fetch(File.extname(filename).downcase, "application/octet-stream")
       content = file.fetch(:io).read.to_s.b
       "--#{boundary}\r\nContent-Disposition: form-data; name=\"#{file.fetch(:name)}\"; filename=\"#{filename}\"\r\n" \
-        "Content-Type: #{type}\r\n\r\n".b + content + "\r\n".b
+      "Content-Type: #{type}\r\n\r\n".b + content + "\r\n".b
     end
   end
   private_constant :Multipart

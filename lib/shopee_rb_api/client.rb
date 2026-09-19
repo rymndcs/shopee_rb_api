@@ -25,7 +25,8 @@ module ShopeeRbApi
       hosts = hosts!(endpoint)
       @connection = Connection.new(
         partner_id: Integer(@app_key), partner_key: secret!(app_secret),
-        base_url: url!(base_url || hosts[:api], "base_url"), auth_base_url: url!(auth_base_url || hosts[:auth], "auth_base_url"),
+        base_url: url!(base_url || hosts[:api], "base_url"),
+        auth_base_url: url!(auth_base_url || hosts[:auth], "auth_base_url"),
         transport: callable!(transport, "transport"), clock: callable!(clock, "clock"), logger:,
         retry_policy: retry_policy || RetryPolicy.none
       )

@@ -16,16 +16,20 @@ module ShopeeRbApi
 
     module_function
 
+    # What an error needs besides the body: where the call went, whether it was idempotent, the response headers
+    # and the time it was stamped.
+    Call = Data.define(:endpoint, :idempotent, :headers, :now)
+
     def build(result, endpoint:, idempotent:, now:)
       status = result.fetch(:status).to_i
-      headers = result[:headers] || {}
+      call = Call.new(endpoint:, idempotent:, headers: result[:headers] || {}, now:)
       parsed = parse(result[:body])
-      raise http_error(status, headers, endpoint, idempotent, now) if parsed.nil?
+      raise http_error(status, call) if parsed.nil?
 
       response = to_response(parsed, status, endpoint)
       error = parsed["error"].to_s
-      raise api_error(error, parsed, response, headers, idempotent, now) unless error.empty?
-      raise http_error(status, headers, endpoint, idempotent, now, response) if status >= 400
+      raise api_error(error, parsed, response, call) unless error.empty?
+      raise http_error(status, call, response) if status >= 400
 
       response
     end
@@ -60,45 +64,51 @@ module ShopeeRbApi
       Array(parsed["warning"]).map(&:to_s).reject(&:empty?).freeze
     end
 
+    # Shopee's per-item failures inside a success: failure_list (unlist, stock, price), failure_item_list
+    # (diagnosis), item_list[].fail_error (violations) and image_info_list[].error (upload_image).
     def item_errors(data)
       return [] unless data.is_a?(Hash)
 
-      failures = Array(data["failure_list"]) + Array(data["failure_item_list"])
-      errors = failures.map { |f| item_error(f["item_id"] || f["model_id"], "", f["failed_reason"], f) }
-      Array(data["item_list"]).each do |item|
-        next if item["fail_error"].to_s.empty?
+      failure_lists(data) + flagged(data["item_list"], "item_id", "fail_error", "fail_message") +
+        flagged(data["image_info_list"], "id", "error", "message")
+    end
 
-        errors << item_error(item["item_id"], item["fail_error"], item["fail_message"], item)
+    def failure_lists(data)
+      (Array(data["failure_list"]) + Array(data["failure_item_list"])).map do |failure|
+        item_error(failure["item_id"] || failure["model_id"], "", failure["failed_reason"], failure)
       end
-      Array(data["image_info_list"]).each do |image|
-        errors << item_error(image["id"], image["error"], image["message"], image) unless image["error"].to_s.empty?
+    end
+
+    def flagged(list, id_key, code_key, message_key)
+      Array(list).reject { |entry| entry[code_key].to_s.empty? }.map do |entry|
+        item_error(entry[id_key], entry[code_key], entry[message_key], entry)
       end
-      errors
     end
 
     def item_error(id, code, message, raw)
       ItemError.new(id: id.to_s, code: code.to_s, message: message.to_s, raw: deep_freeze(raw))
     end
 
-    def api_error(code, parsed, response, headers, idempotent, now)
+    def api_error(code, parsed, response, call)
       klass = ErrorTable.classify(code, parsed["message"] || parsed["msg"])
       message = parsed["message"].to_s.empty? ? code : parsed["message"].to_s
       klass.new(message, code:, request_id: response.request_id, http_status: response.http_status,
-                         endpoint: response.endpoint, detail: [], response:, idempotent:,
-                         retry_after: retry_after(klass, headers, now))
+                         endpoint: call.endpoint, detail: [], response:, idempotent: call.idempotent,
+                         retry_after: retry_after(klass, call))
     end
 
-    def http_error(status, headers, endpoint, idempotent, now, response = nil)
+    def http_error(status, call, response = nil)
       klass = ErrorTable.classify_status(status)
-      klass.new("HTTP #{status}", code: status.to_s, request_id: response&.request_id, http_status: status, endpoint:,
-                                  detail: [], response:, idempotent:, retry_after: retry_after(klass, headers, now))
+      klass.new("HTTP #{status}", code: status.to_s, request_id: response&.request_id, http_status: status,
+                                  endpoint: call.endpoint, detail: [], response:, idempotent: call.idempotent,
+                                  retry_after: retry_after(klass, call))
     end
 
-    def retry_after(klass, headers, now)
-      header = headers.find { |k, _| k.to_s.casecmp?("retry-after") }&.last
-      from_header = parse_retry_after(Array(header).first, now)
+    def retry_after(klass, call)
+      header = call.headers.find { |k, _| k.to_s.casecmp?("retry-after") }&.last
+      from_header = parse_retry_after(Array(header).first, call.now)
       return from_header if from_header
-      return seconds_to_utc8_midnight(now) if klass == QuotaExceededError
+      return seconds_to_utc8_midnight(call.now) if klass == QuotaExceededError
 
       nil
     end
