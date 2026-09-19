@@ -20,3 +20,6 @@ All notable changes to this gem are documented here. The format follows
   `test/support/fake_transport.rb` and the conformance suite in `test/conformance/`, pinned by
   `test/conformance/MANIFEST` and checked by `rake conformance:verify` (RAC-275).
 - Opt-in live tests (`rake test:live`) that can record redacted responses into `test/fixtures/` (RAC-275).
+- Shared contract version 2 (`CONTRACT_VERSION = "2"`): the conformance suite accepts `Client.new` keywords declared in
+  `EXTENSIONS` and an optional `:token` host per `ENDPOINTS` entry with a `token_base_url:` override. Shopee declares
+  neither, so its behaviour does not change (RAC-275).
