@@ -43,6 +43,17 @@ class LiveRecorderTest < Minitest::Test
     end
   end
 
+  def test_order_responses_are_never_recorded_behind_a_base_url_path
+    Dir.mktmpdir do |dir|
+      inner = FakeTransport.new(Fixtures.response("order_get_order_detail"))
+      recorder = LiveHelper::Recorder.new(inner, secrets: [], label: "SHOPEE_SANDBOX", dir:)
+      recorder.call(method: :get, url: "https://h.test/shopee/api/v2/order/get_order_detail?sign=abc", headers: {},
+                    body: nil)
+
+      assert_empty Dir.children(dir)
+    end
+  end
+
   def test_customer_personal_data_is_redacted_in_other_responses
     Dir.mktmpdir do |dir|
       response = { "shop_id" => 10, "Email" => "a@b.test", "phone2" => "61****7", "buyer_username" => "hh",

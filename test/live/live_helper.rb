@@ -25,7 +25,7 @@ module LiveHelper
   REQUIRED = %w[PARTNER_ID PARTNER_KEY SHOP_ID ACCESS_TOKEN].freeze
   SECRET_KEYS = /token|secret|partner_key|\Asign\z|resend_code|\Acode\z/i
   # Order endpoints are never recorded: their responses carry real customers' names, phones and addresses.
-  ORDER_PATHS = %r{\A/api/v2/order/}
+  ORDER_PATHS = %r{/api/v2/order/}
   # Customer personal-data words, matched case-insensitively against each word of a key (snake_case or camelCase,
   # digits ignored: address1, phone2, buyer_username, item_name, nickName). A matching key loses its whole value.
   PERSONAL_WORDS = %w[email phone name nickname username address].freeze
