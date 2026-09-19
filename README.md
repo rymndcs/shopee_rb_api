@@ -269,7 +269,8 @@ SHOPEE_SANDBOX_SHOP_ID=... SHOPEE_SANDBOX_ACCESS_TOKEN=... bundle exec rake test
 ```
 
 Use `SHOPEE_LIVE_*` for the production app (endpoint `:sg` unless `SHOPEE_LIVE_ENDPOINT` says otherwise). Add
-`SHOPEE_RECORD=1` to replace the documentation fixtures with redacted recordings.
+`SHOPEE_RECORD=1` to replace the documentation fixtures with redacted recordings of successful responses (error
+responses are never recorded).
 
 ## Contract version
 
