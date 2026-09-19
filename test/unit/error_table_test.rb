@@ -95,6 +95,16 @@ class ErrorTableTest < Minitest::Test
     assert_equal "Invalid access_token.", error.message
   end
 
+  def test_an_envelope_only_or_null_response_gives_an_empty_hash
+    [{ "error" => "", "request_id" => "r" }, { "error" => "", "request_id" => "r", "response" => nil }].each do |body|
+      client, = client_with(FakeTransport.json(body))
+      data = A.build_shop(client).variants.update_tiers(1, { model_list: [] }).data
+
+      assert_equal({}, data)
+      assert_predicate data, :frozen?
+    end
+  end
+
   def test_a_non_empty_error_inside_a_2xx_raises_even_with_a_payload
     body = Fixtures.body("shop_get_warehouse_detail")
                    .merge("error" => "warehouse.error_not_in_whitelist",

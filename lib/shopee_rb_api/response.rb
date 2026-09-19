@@ -52,7 +52,8 @@ module ShopeeRbApi
       if rest.key?("response")
         inner = rest.delete("response")
         # get_item_limit documents gtin_limit beside `response`; keep such siblings rather than drop them.
-        inner.is_a?(Hash) ? rest.merge(inner) : inner
+        # A null `response` (update_tier_variation answers with the envelope only) leaves the siblings, often {}.
+        inner.is_a?(Array) ? inner : rest.merge(inner || {})
       elsif rest.key?("data") && rest.size == 1
         rest["data"]
       else
