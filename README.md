@@ -274,6 +274,6 @@ responses are never recorded).
 
 ## Contract version
 
-`ShopeeRbApi::CONTRACT_VERSION` is `"1"`. The shared interface lives in [CONTRACT.md](CONTRACT.md), which is identical
+`ShopeeRbApi::CONTRACT_VERSION` is `"2"`. The shared interface lives in [CONTRACT.md](CONTRACT.md), which is identical
 in all three sibling gems; `test/conformance/` enforces it and `rake conformance:verify` proves the shared files match
 `test/conformance/MANIFEST`. Change the contract only in all three gems at once, as CONTRACT.md describes.
